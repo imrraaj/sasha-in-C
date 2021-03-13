@@ -19,10 +19,11 @@ int main(int argc, char const *argv[])
 {
     int array[argc];
     char start[] = "start ";
+    char ytquery[] = "www.youtube.com/results?search_query=";
     char url[100];
     for (int i = 2; i < argc; i++)
     {
-        if (strcmp(argv[1], "url") == 0)
+        if ((strcmp(argv[1], "url") == 0) || (strcmp(argv[1], "ytsearch") == 0))
             break;
         else
             array[i] = (int)atoi(argv[i]);
@@ -63,6 +64,14 @@ int main(int argc, char const *argv[])
     {
         scanf("%s", url);
         strcat(start, url);
+        system(start);
+    }
+    else if (strcmp(argv[1], "ytsearch") == 0)
+    {
+        scanf("%s", url);
+        strcat(start, ytquery);
+        strcat(start, url);
+        // printf("%s",start);
         system(start);
     }
     else
